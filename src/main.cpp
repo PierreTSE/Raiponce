@@ -4,6 +4,7 @@
 #include "Cheveux.h"
 #include "RessourceLoader.hpp"
 #include "globalClock.hpp"
+#include "ObstaclesManager.h"
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
 	Tour tour;
 	Cheveux cheveux;
 
+	globalClock::getClock().restart();
     while (window.isOpen())
     {
         sf::Event event;
@@ -32,6 +34,7 @@ int main()
 		window.draw(bg);
 		tour.draw(window);
 		cheveux.draw(window);
+		ObstaclesManager::getInstance().gestion(window);
         window.display();
     }
 

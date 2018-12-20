@@ -27,8 +27,8 @@ int main()
 
         window.clear();
         //window.draw(shape);
-		window.draw(bg);
-		tour.draw(window);
+		//window.draw(bg);
+		//tour.draw(window);
         window.display();
     }
 

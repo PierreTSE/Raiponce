@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "constantes.hpp"
 #include "Tour.h"
+#include "Cheveux.h"
 #include "RessourceLoader.hpp"
 #include "globalClock.hpp"
 
@@ -14,6 +15,7 @@ int main()
 	bg.setTexture(RessourceLoader::getTexture("fond.png"));
 
 	Tour tour;
+	Cheveux cheveux;
 
     while (window.isOpen())
     {
@@ -29,6 +31,7 @@ int main()
         //window.draw(shape);
 		window.draw(bg);
 		tour.draw(window);
+		cheveux.draw(window);
         window.display();
     }
 

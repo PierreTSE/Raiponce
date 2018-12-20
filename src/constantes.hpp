@@ -16,6 +16,9 @@ constexpr unsigned int INITIAL_SPRITE_WIDTH = 340;
 
 constexpr unsigned int TARGET_SPRITE_WIDTH = 4*PIXEL_SIZE;
 
+constexpr unsigned int TOWER_X1 = 245;
+constexpr unsigned int TOWER_X2 = 990;
+
 constexpr double SPRITE_RATIO = (double)TARGET_SPRITE_WIDTH / INITIAL_SPRITE_WIDTH;
 constexpr double TARGET_SPRITE_HEIGHT = SPRITE_RATIO * INITIAL_SPRITE_HEIGHT;
 

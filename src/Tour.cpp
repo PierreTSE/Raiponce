@@ -7,7 +7,6 @@ Tour::Tour()
 {
 	tour1.setTexture(RessourceLoader::getTexture("tour.png"));
 	tour2.setTexture(RessourceLoader::getTexture("tour.png"));
-	tour3.setTexture(RessourceLoader::getTexture("tour.png"));
 }
 
 void Tour::draw(sf::RenderWindow & window)
@@ -16,11 +15,9 @@ void Tour::draw(sf::RenderWindow & window)
 
 	tour1.setPosition(0, currentPosition - WINDOW_SIZE_Y);
 	tour2.setPosition(0, currentPosition);
-	tour3.setPosition(0, currentPosition + WINDOW_SIZE_Y);
 
 	window.draw(tour1);
 	window.draw(tour2);
-	window.draw(tour3);
 
 	if (currentPosition > WINDOW_SIZE_Y)
 		currentPosition = 0;

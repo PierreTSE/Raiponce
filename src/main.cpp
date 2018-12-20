@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include "constantes.hpp"
 #include "Tour.h"
+#include "Cheveux.h"
 #include "RessourceLoader.hpp"
 #include "globalClock.hpp"
+#include "ObstaclesManager.h"
 
 int main()
 {
@@ -14,7 +16,9 @@ int main()
 	bg.setTexture(RessourceLoader::getTexture("fond.png"));
 
 	Tour tour;
+	Cheveux cheveux;
 
+	globalClock::getClock().restart();
     while (window.isOpen())
     {
         sf::Event event;
@@ -27,8 +31,10 @@ int main()
 
         window.clear();
         //window.draw(shape);
-		//window.draw(bg);
-		//tour.draw(window);
+		window.draw(bg);
+		tour.draw(window);
+		cheveux.draw(window);
+		ObstaclesManager::getInstance().gestion(window);
         window.display();
     }
 

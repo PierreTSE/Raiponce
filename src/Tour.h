@@ -5,7 +5,7 @@
 
 class Tour {
 	private:
-		sf::Sprite tour1, tour2, tour3;
+		sf::Sprite tour1, tour2;
 		float currentPosition = 0;
 	public:
 		Tour();

@@ -5,6 +5,7 @@
 #include "RessourceLoader.hpp"
 #include "globalClock.hpp"
 #include "ObstaclesManager.h"
+#include "Chevalier.hpp"
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
 
 	Tour tour;
 	Cheveux cheveux;
+	Chevalier chevalier;
 
 	globalClock::getClock().restart();
     while (window.isOpen())
@@ -35,6 +37,7 @@ int main()
 		tour.draw(window);
 		cheveux.draw(window);
 		ObstaclesManager::getInstance().gestion(window);
+		chevalier.draw(window);
         window.display();
     }
 

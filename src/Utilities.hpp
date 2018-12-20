@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <filesystem>
 
+sf::Vector2f normalize(const sf::Vector2f& source);
+
 sf::Color static makeHSV(int hue, float sat, float val, float alpha);
 
 // hue: 0-360°; sat: 0.f-1.f; val: 0.f-1.f

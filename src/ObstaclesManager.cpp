@@ -2,9 +2,16 @@
 #include "globalClock.hpp"
 #include "Utilities.hpp"
 #include "constantes.hpp"
+#include "RessourceLoader.hpp"
+#include <filesystem>
 
 ObstaclesManager::ObstaclesManager()
 {
+    const std::filesystem::path obstaclesPath("rc/obstacles");
+    for(auto& p : std::filesystem::directory_iterator(obstaclesPath))
+    {
+        obstacles_.emplace_back(strip_root(p.path()).u8string());
+    }
 }
 
 ObstaclesManager & ObstaclesManager::getInstance()
@@ -17,16 +24,15 @@ void ObstaclesManager::gestion(sf::RenderWindow & window)
 {
 	timer += globalClock::getClock().frameTime();
 
-	if (timer > sf::seconds(5)) {
-		obstacles_.emplace_back(random(TOWER_X1, TOWER_X2), 0);
-		timer = sf::Time::Zero;
+	if (timer > sf::seconds(2)) {
+        int n_obs = random(obstacles_.size() - 1);
+        const float h_sprite = 230;
+		if(obstacles_[n_obs].getPosition().y > WINDOW_SIZE_Y - h_sprite/2){
+		    obstacles_[n_obs].reset();
+		    timer = sf::Time::Zero;
+		}
 	}
 	for (auto &o : obstacles_) {
 		o.draw(window);
 	}
-
-	obstacles_.erase(std::remove_if(obstacles_.begin(),
-		obstacles_.end(),
-		[](auto& elem) { return elem.isDead(); }),
-		obstacles_.end());
 }

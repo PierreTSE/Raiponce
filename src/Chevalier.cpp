@@ -5,15 +5,12 @@
 
 Chevalier::Chevalier()
 {
-    /*sprites_.emplace_back();
-    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_haut"));
     sprites_.emplace_back();
-    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_milieu"));
+    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_haut.png"));
     sprites_.emplace_back();
-    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_bas"));*/
-
-	rect_.setSize({ 270, 270 });
-	rect_.setPosition(0, 0);
+    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_milieu.png"));
+    sprites_.emplace_back();
+    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_bas.png"));
 
 	
 }
@@ -32,7 +29,7 @@ void Chevalier::draw(sf::RenderWindow & window)
 	
 	sp = normalize(sp);
 
-	rect_.move(globalClock::getClock().frameTime().asSeconds() * speed * sp.x, globalClock::getClock().frameTime().asSeconds() * speed * sp.y);
+	sprites_[1].move(globalClock::getClock().frameTime().asSeconds() * speed * sp.x, globalClock::getClock().frameTime().asSeconds() * speed * sp.y);
 
-	window.draw(rect_);
+	window.draw(sprites_[1]);
 }

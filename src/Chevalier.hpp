@@ -13,7 +13,6 @@ public:
 
 private:
     std::vector<sf::Sprite> sprites_;
-	sf::RectangleShape rect_;
 
     sf::Time animationTime_;
     sf::Clock clock_;

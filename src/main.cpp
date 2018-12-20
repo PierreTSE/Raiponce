@@ -6,6 +6,8 @@
 #include "globalClock.hpp"
 #include "ObstaclesManager.h"
 #include "Chevalier.hpp"
+#include <iostream>
+#include <filesystem>
 
 int main()
 {
@@ -20,24 +22,25 @@ int main()
 	Cheveux cheveux;
 	Chevalier chevalier;
 
-	globalClock::getClock().restart();
     while (window.isOpen())
     {
+        globalClock::getClock().restart();
+
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-		globalClock::getClock().restart();
+		
 
         window.clear();
         //window.draw(shape);
 		window.draw(bg);
 		tour.draw(window);
 		cheveux.draw(window);
-		ObstaclesManager::getInstance().gestion(window);
-		chevalier.draw(window);
+        chevalier.draw(window);
+		ObstaclesManager::getInstance().gestion(window);		
         window.display();
     }
 

@@ -3,6 +3,7 @@
 #include "globalClock.hpp"
 #include "Utilities.hpp"
 #include "ObstaclesManager.h"
+#include "constantes.hpp"
 
 #include <iostream>
 
@@ -140,6 +141,29 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 			}
 
 		}
+
+
+		if (sprites_.back().getPosition().x - sprites_.back().getGlobalBounds().width/2 < 0) 
+		{
+			tempsImune_ = sf::Time::Zero;
+			vit_.x = 2;
+		}
+		if (sprites_.back().getPosition().x + sprites_.back().getGlobalBounds().width/2 > WINDOW_SIZE_X)
+		{
+			tempsImune_ = sf::Time::Zero;
+			vit_.x = -2;
+		}
+		if (sprites_.back().getPosition().y - sprites_.back().getGlobalBounds().height/2 < 0)
+		{
+			tempsImune_ = sf::Time::Zero;
+			vit_.y = 0.5;
+		}
+		if (sprites_.back().getPosition().y + sprites_.back().getGlobalBounds().height/2 > WINDOW_SIZE_Y)
+		{
+			tempsImune_ = sf::Time::Zero;
+			vit_.y = -0.5;
+		}
+
 		
 	}
 	

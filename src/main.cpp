@@ -10,6 +10,7 @@
 #include <filesystem>
 #include "Mechant.hpp"
 
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), "SFML works!");
@@ -24,6 +25,8 @@ int main()
 	Chevalier chevalier;
     Mechant mechantGauche;
     Mechant mechantDroite(false);
+
+	chevalier.setPosition(cheveux.getX(), 400);
 
     while (window.isOpen())
     {
@@ -42,7 +45,7 @@ int main()
 		window.draw(bg);
 		tour.draw(window);
 		cheveux.draw(window);
-        chevalier.draw(window);
+        chevalier.draw(window, cheveux);
         mechantDroite.draw(window);
         mechantGauche.draw(window);
 		ObstaclesManager::getInstance().gestion(window);		

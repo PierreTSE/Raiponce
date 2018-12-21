@@ -8,9 +8,12 @@ class Cheveux {
 		sf::Sprite cheveux1, cheveux2;
 		float currentPosition = 0, x = 0;
 		int sens = 1;
+		float width;
 		sf::Time timer, nextShift;
 	public:
 		Cheveux();
+		float getWidth() {return width;};
+		float getX() { return x; }
 		void draw(sf::RenderWindow &window);
 
 };

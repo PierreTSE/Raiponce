@@ -171,70 +171,85 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
                             surprises_[n_surp].play();
                     }
 				}
-			}
+			}            
 
 		}
-
-
 		if (sprites_.back().getPosition().x - sprites_.back().getGlobalBounds().width/2 < 0) 
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.x = 2;
+            /*const int n_boing = random(boings_.size()-1);
+                    if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                        boings_[n_boing].play();
+                    if(random(1, 100) <= 60)
+                    {
+                        const int n_surp = random(surprises_.size()-1);
+                        if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                            surprises_[n_surp].play();
+                    }
 
-            const int n_boing = random(boings_.size()-1);
-                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
-                    boings_[n_boing].play();          
-            if(random(1, 100) <= 40)
-			{
-                const int n_surp = random(surprises_.size()-1);
-                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
-                    surprises_[n_surp].play();
-			}           
+            const sf::Vector2f pos = {0, sprites_.front().getPosition().y};
+            for(auto &s : sprites_)
+                s.setPosition(pos);*/
+                    
 		}
 		if (sprites_.back().getPosition().x + sprites_.back().getGlobalBounds().width/2 > WINDOW_SIZE_X)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.x = -2;
+            /*const int n_boing = random(boings_.size()-1);
+                    if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                        boings_[n_boing].play();
+                    if(random(1, 100) <= 60)
+                    {
+                        const int n_surp = random(surprises_.size()-1);
+                        if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                            surprises_[n_surp].play();
+                    }
 
-            const int n_boing = random(boings_.size()-1);
-                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
-                    boings_[n_boing].play();                   
-            if(random(1, 100) <= 40)
-            {
-                const int n_surp = random(surprises_.size()-1);
-                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
-                    surprises_[n_surp].play();
-            }
+            const sf::Vector2f pos = {(float)WINDOW_SIZE_X+, sprites_.front().getPosition().y};
+            for(auto &s : sprites_)
+                s.setPosition(pos);*/
+            
 		}
 		if (sprites_.back().getPosition().y - sprites_.back().getGlobalBounds().height/2 < 0)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.y = 0.5;
+            /*const int n_boing = random(boings_.size()-1);
+                    if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                        boings_[n_boing].play();
+                    if(random(1, 100) <= 60)
+                    {
+                        const int n_surp = random(surprises_.size()-1);
+                        if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                            surprises_[n_surp].play();
+                    }
+
+
+                    const sf::Vector2f pos = {sprites_.front().getPosition().x, 0.1};
+            for(auto &s : sprites_)
+                s.setPosition(pos);*/
             
-            const int n_boing = random(boings_.size()-1);
-                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
-                    boings_[n_boing].play();                   
-            if(random(1, 100) <= 40)
-			{
-                const int n_surp = random(surprises_.size()-1);
-                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
-                    surprises_[n_surp].play();
-			}
 		}
 		if (sprites_.back().getPosition().y + sprites_.back().getGlobalBounds().height/2 > WINDOW_SIZE_Y)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.y = -0.5;
-            
-            const int n_boing = random(boings_.size()-1);
-                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
-                    boings_[n_boing].play();                   
-            if(random(1, 100) <= 40)
-			{
-                const int n_surp = random(surprises_.size()-1);
-                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
-                    surprises_[n_surp].play();
-			}
+            /*const int n_boing = random(boings_.size()-1);
+                    if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                        boings_[n_boing].play();
+                    if(random(1, 100) <= 60)
+                    {
+                        const int n_surp = random(surprises_.size()-1);
+                        if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                            surprises_[n_surp].play();
+                    }
+
+            const sf::Vector2f pos = {sprites_.front().getPosition().x, (float)WINDOW_SIZE_Y +0.1};
+            for(auto &s : sprites_)
+                s.setPosition(pos);
+            */
 		}
 
 		

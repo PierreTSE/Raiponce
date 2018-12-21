@@ -16,6 +16,34 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), "Rape paint");
 
+	// ACCUEIL-------------------
+    sf::Sprite accueil;
+    accueil.setTexture(RessourceLoader::getTexture("sprites/accueil.png"));
+
+    sf::Text text1;
+    text1.setFont(RessourceLoader::getFont("font/Precious.ttf"));
+    text1.setCharacterSize(48);
+    text1.setString("Sauvez la");
+    text1.setPosition(70, 100);
+
+    sf::Text text2;
+    text2.setFont(RessourceLoader::getFont("font/Precious.ttf"));
+    text2.setCharacterSize(48);
+    text2.setString("Princesse");
+    text2.setPosition(120, 150);
+
+    sf::Text text3;
+    text3.setFont(RessourceLoader::getFont("font/Precious.ttf"));
+    text3.setCharacterSize(90);
+    text3.setString("RapePaint");
+    text3.setPosition(70, 240);
+    
+    
+   
+
+
+    // JEU--------------------
+
     //background
 	sf::Sprite bg;
 	bg.setTexture(RessourceLoader::getTexture("sprites/fond.png"));
@@ -42,8 +70,35 @@ int main()
 	chevalier.setPosition(cheveux.getX(), 400);
 
 
+
+
+
+    //ACCUEIL
+
+    bool isaccueil = true;
+    while(isaccueil)
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::KeyPressed)
+                isaccueil = false;
+        }
+
+        window.clear();
+        window.draw(accueil);
+        window.draw(text1); 
+        window.draw(text2);
+        window.draw(text3);
+        window.display();
+    }
+
+    //JEU
+
+
     //lancement musique
     music.play();
+
 
     while (window.isOpen())
     {

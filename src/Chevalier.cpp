@@ -26,6 +26,29 @@ Chevalier::Chevalier()
 	tempsImune_ = sf::seconds(1000);
 
 	vit_ = { 0,0 };
+
+    //son
+    boings_.emplace_back();
+    boings_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/bump/1.wav"));
+    boings_.emplace_back();
+    boings_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/bump/2.wav"));
+    boings_.emplace_back();
+    boings_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/bump/3.wav"));
+    boings_.emplace_back();
+    boings_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/bump/4.wav"));
+
+    surprises_.emplace_back();
+    surprises_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/surprise/1.wav"));
+    surprises_.emplace_back();
+    surprises_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/surprise/2.wav"));
+    surprises_.emplace_back();
+    surprises_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/victoire/victoire1.wav"));
+    surprises_.emplace_back();
+    surprises_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/victoire/victoire2.wav"));
+    surprises_.emplace_back();
+    surprises_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/victoire/victoire3.wav"));
+    surprises_.emplace_back();
+    surprises_.back().setBuffer(RessourceLoader::getSoundBuffer("audio/victoire/victoire4.wav"));
 }
 
 void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
@@ -137,6 +160,12 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 					tempsImune_ = sf::Time::Zero;
 					vit_ = sprites_.back().getPosition() - (o.getPosition() + sf::Vector2f(o.getSize().x / 2, o.getSize().y / 2));
 					vit_ = normalize(vit_);
+
+                    boings_[random(boings_.size()-1)].play();
+                    if(random(1, 100) <= 60)
+                    {
+                        surprises_[random(surprises_.size()-1)].play();
+                    }
 				}
 			}
 

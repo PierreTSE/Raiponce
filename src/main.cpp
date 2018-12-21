@@ -9,29 +9,41 @@
 #include <iostream>
 #include <filesystem>
 #include "Mechant.hpp"
+#include <SFML/Audio/Music.hpp>
 
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), "Rape paint");
-    
+
+    //background
 	sf::Sprite bg;
 	bg.setTexture(RessourceLoader::getTexture("sprites/fond.png"));
 
+    //score
     sf::Text scoreText;
     scoreText.setFont(RessourceLoader::getFont("font/KingsCross.ttf"));
     scoreText.setCharacterSize(60);
     scoreText.setFillColor(sf::Color(255, 255 , 255));
-
     double score = 0;
 
+    //sons
+    sf::Music music;
+    music.openFromFile(RessourceLoader::getPath("audio/music/ClubSeamus.ogg"));
+    music.setLoop(true);
+    
+
+    //entités
 	Tour tour;
 	Cheveux cheveux;
 	Chevalier chevalier;
     Mechant mechantGauche;
     Mechant mechantDroite(false);
-
 	chevalier.setPosition(cheveux.getX(), 400);
+
+
+    //lancement musique
+    music.play();
 
     while (window.isOpen())
     {

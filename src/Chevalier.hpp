@@ -6,6 +6,7 @@
 #include <SFML/System/Clock.hpp>
 
 #include "Cheveux.h"
+#include <SFML/Audio/Sound.hpp>
 
 class Chevalier
 {
@@ -15,6 +16,11 @@ public:
 	void setPosition(int x, int y);
 
 private:
+    //son
+    std::vector<sf::Sound> boings_;
+    std::vector<sf::Sound> surprises_;
+
+    //graphiques
     std::vector<sf::Sprite> sprites_;
 	sf::RectangleShape hitbox_;
 

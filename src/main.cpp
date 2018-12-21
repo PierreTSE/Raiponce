@@ -83,6 +83,8 @@ int main()
         {
             if (event.type == sf::Event::KeyPressed)
                 isaccueil = false;
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
 
         window.clear();

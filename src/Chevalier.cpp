@@ -161,10 +161,14 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 					vit_ = sprites_.back().getPosition() - (o.getPosition() + sf::Vector2f(o.getSize().x / 2, o.getSize().y / 2));
 					vit_ = normalize(vit_);
 
-                    boings_[random(boings_.size()-1)].play();
+                    const int n_boing = random(boings_.size()-1);
+                    if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                        boings_[n_boing].play();
                     if(random(1, 100) <= 60)
                     {
-                        surprises_[random(surprises_.size()-1)].play();
+                        const int n_surp = random(surprises_.size()-1);
+                        if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                            surprises_[n_surp].play();
                     }
 				}
 			}
@@ -176,21 +180,61 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.x = 2;
+
+            const int n_boing = random(boings_.size()-1);
+                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                    boings_[n_boing].play();          
+            if(random(1, 100) <= 40)
+			{
+                const int n_surp = random(surprises_.size()-1);
+                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                    surprises_[n_surp].play();
+			}           
 		}
 		if (sprites_.back().getPosition().x + sprites_.back().getGlobalBounds().width/2 > WINDOW_SIZE_X)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.x = -2;
+
+            const int n_boing = random(boings_.size()-1);
+                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                    boings_[n_boing].play();                   
+            if(random(1, 100) <= 40)
+            {
+                const int n_surp = random(surprises_.size()-1);
+                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                    surprises_[n_surp].play();
+            }
 		}
 		if (sprites_.back().getPosition().y - sprites_.back().getGlobalBounds().height/2 < 0)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.y = 0.5;
+            
+            const int n_boing = random(boings_.size()-1);
+                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                    boings_[n_boing].play();                   
+            if(random(1, 100) <= 40)
+			{
+                const int n_surp = random(surprises_.size()-1);
+                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                    surprises_[n_surp].play();
+			}
 		}
 		if (sprites_.back().getPosition().y + sprites_.back().getGlobalBounds().height/2 > WINDOW_SIZE_Y)
 		{
 			tempsImune_ = sf::Time::Zero;
 			vit_.y = -0.5;
+            
+            const int n_boing = random(boings_.size()-1);
+                if(boings_[n_boing].getStatus() != sf::Sound::Status::Playing)
+                    boings_[n_boing].play();                   
+            if(random(1, 100) <= 40)
+			{
+                const int n_surp = random(surprises_.size()-1);
+                if(surprises_[n_surp].getStatus() != sf::Sound::Status::Playing)
+                    surprises_[n_surp].play();
+			}
 		}
 
 		

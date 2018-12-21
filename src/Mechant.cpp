@@ -37,8 +37,6 @@ void Mechant::draw(sf::RenderWindow & window)
         sprite_.move(0, -2 * sprite_.getPosition().y);
         isGoingDown = true;
 	}
-
-    std::cout<< sprite_.getPosition().y<<std::endl;
-
+    
     window.draw(sprite_);
 }

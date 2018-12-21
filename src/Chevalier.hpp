@@ -18,8 +18,9 @@ private:
     std::vector<sf::Sprite> sprites_;
 	sf::RectangleShape hitbox_;
 
-    sf::Time animationTime_, tempsVide_;
+	sf::Time animationTime_, tempsVide_, tempsImune_;;
     sf::Clock clock_;
+	sf::Vector2f vit_;
 
 	float speed = 700;
 	int currentFrame_ = 0;

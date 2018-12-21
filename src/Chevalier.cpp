@@ -2,8 +2,9 @@
 #include "RessourceLoader.hpp"
 #include "globalClock.hpp"
 #include "Utilities.hpp"
+#include "ObstaclesManager.h"
 
-
+#include <iostream>
 
 Chevalier::Chevalier()
 {
@@ -21,6 +22,9 @@ Chevalier::Chevalier()
 		s.setOrigin({ s.getGlobalBounds().width / 2.f, s.getGlobalBounds().height / 2.f });
 
 	tempsVide_ = sf::Time::Zero;
+	tempsImune_ = sf::seconds(1000);
+
+	vit_ = { 0,0 };
 }
 
 void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
@@ -36,6 +40,7 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 	else
 	{
 		animationTime_ += globalClock::getClock().frameTime();
+		tempsImune_ += globalClock::getClock().frameTime();
 
 		if (animationTime_ > sf::milliseconds(50))
 		{
@@ -45,15 +50,60 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 				currentFrame_ = 0;
 		}
 
+		if (tempsImune_ > sf::seconds(1))
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				sp.y = -1;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				sp.y = 1;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				sp.x = -1;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				sp.x = 1;
+		}
+		else
+		{
+			sp = vit_;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			sp.y = -1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			sp.y = 1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			sp.x = -1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			sp.x = 1;
+			if (vit_.x > 0)
+			{
+				vit_.x -= globalClock::getClock().frameTime().asSeconds() * 2;
+				if (vit_.x < 0)
+				{
+					tempsImune_ = sf::seconds(100);
+					vit_.x = 0;
+				}
+					
+			}
+			if (vit_.x < 0)
+			{
+				vit_.x += globalClock::getClock().frameTime().asSeconds() * 2;
+				if (vit_.x > 0)
+				{
+					tempsImune_ = sf::seconds(100);
+					vit_.x = 0;
+				}
+			}
+				
+			if (vit_.y > 0)
+			{
+				vit_.y -= globalClock::getClock().frameTime().asSeconds() * 2;
+				if (vit_.y < 0)
+				{
+					tempsImune_ = sf::seconds(100);
+					vit_.y = 0;
+				}
+			}
+			if (vit_.y < 0)
+			{
+				vit_.y += globalClock::getClock().frameTime().asSeconds() * 2;
+				if (vit_.y > 0)
+				{
+					tempsImune_ = sf::seconds(100);
+					vit_.y = 0;
+				}
+			}
+		}
 
 		if (sprites_.front().getPosition().x + sprites_.front().getGlobalBounds().width/2 < ch.getX() || sprites_.front().getPosition().x - sprites_.front().getGlobalBounds().width / 2 > ch.getX() + ch.getWidth())
 		{
@@ -63,7 +113,29 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 				dead = true;
 		}
 		else
+		{
+			
+			if (tempsImune_ > sf::seconds(0.5f) && tempsVide_ != sf::Time::Zero)
+				tempsImune_ = sf::seconds(100);
+
 			tempsVide_ = sf::Time::Zero;
+		}
+			
+
+		if (tempsImune_ > sf::seconds(1))
+		{
+			for (auto o : ObstaclesManager::getInstance().getVector())
+			{
+				if (hitbox_.getGlobalBounds().intersects(o.getBox()))
+				{
+					tempsImune_ = sf::Time::Zero;
+					vit_ = sprites_.back().getPosition() - (o.getPosition() + sf::Vector2f(o.getSize().x / 2, o.getSize().y / 2));
+					vit_ = normalize(vit_);
+				}
+			}
+
+		}
+		
 	}
 	
 
@@ -79,7 +151,7 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 	hitbox_.move(dep);
 
 	window.draw(sprites_[currentFrame_]);
-	window.draw(hitbox_);
+	//window.draw(hitbox_);
 }
 
 void Chevalier::setPosition(int x, int y)

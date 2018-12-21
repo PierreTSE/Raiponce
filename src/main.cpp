@@ -30,7 +30,7 @@ int main()
     text2.setFont(RessourceLoader::getFont("font/Precious.ttf"));
     text2.setCharacterSize(48);
     text2.setString("Princesse");
-    text2.setPosition(120, 150);
+    text2.setPosition(120, 160);
 
     sf::Text text3;
     text3.setFont(RessourceLoader::getFont("font/Precious.ttf"));
@@ -99,6 +99,7 @@ int main()
     //lancement musique
     music.play();
 
+    globalClock::getClock().restart();
 
     while (window.isOpen())
     {

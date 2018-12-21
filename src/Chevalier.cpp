@@ -218,3 +218,22 @@ void Chevalier::setPosition(int x, int y)
 		s.setPosition(x, y);
 	hitbox_.setPosition(x, y);
 }
+
+bool Chevalier::isDead()
+{
+	return dead && hitbox_.getPosition().y > WINDOW_SIZE_Y;
+}
+
+void Chevalier::revive(float x, float y)
+{
+	setPosition(x, y);
+	dead = false;
+
+	tempsVide_ = sf::Time::Zero;
+	tempsImune_ = sf::seconds(1000);
+
+	vit_ = { 0,0 };
+
+	for (auto &s : sprites_)
+		s.setRotation(0);
+}

@@ -14,6 +14,8 @@ public:
     Chevalier();
 	void draw(sf::RenderWindow & window, Cheveux &ch);
 	void setPosition(int x, int y);
+	bool isDead();
+	void revive(float x, float y);
 
 private:
     //son

@@ -8,6 +8,7 @@
 #include "Chevalier.hpp"
 #include <iostream>
 #include <filesystem>
+#include "Mechant.hpp"
 
 int main()
 {
@@ -21,6 +22,8 @@ int main()
 	Tour tour;
 	Cheveux cheveux;
 	Chevalier chevalier;
+    Mechant mechantGauche;
+    Mechant mechantDroite(false);
 
     while (window.isOpen())
     {
@@ -40,6 +43,8 @@ int main()
 		tour.draw(window);
 		cheveux.draw(window);
         chevalier.draw(window);
+        mechantDroite.draw(window);
+        mechantGauche.draw(window);
 		ObstaclesManager::getInstance().gestion(window);		
         window.display();
     }

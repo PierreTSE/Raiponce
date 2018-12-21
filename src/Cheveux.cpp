@@ -6,8 +6,8 @@
 
 Cheveux::Cheveux()
 {
-	cheveux1.setTexture(RessourceLoader::getTexture("hair.png"));
-	cheveux2.setTexture(RessourceLoader::getTexture("hair.png"));
+	cheveux1.setTexture(RessourceLoader::getTexture("sprites/hair.png"));
+	cheveux2.setTexture(RessourceLoader::getTexture("sprites/hair.png"));
 
 	nextShift = sf::seconds(random(3, 10));
 	sens = random(-1, 1);

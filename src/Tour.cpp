@@ -5,8 +5,8 @@
 
 Tour::Tour()
 {
-	tour1.setTexture(RessourceLoader::getTexture("tour.png"));
-	tour2.setTexture(RessourceLoader::getTexture("tour.png"));
+	tour1.setTexture(RessourceLoader::getTexture("sprites/tour.png"));
+	tour2.setTexture(RessourceLoader::getTexture("sprites/tour.png"));
 }
 
 void Tour::draw(sf::RenderWindow & window)

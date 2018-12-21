@@ -7,7 +7,7 @@
 
 ObstaclesManager::ObstaclesManager()
 {
-    const std::filesystem::path obstaclesPath("rc/obstacles");
+    const std::filesystem::path obstaclesPath("rc/sprites/obstacles");
     for(auto& p : std::filesystem::directory_iterator(obstaclesPath))
     {
         obstacles_.emplace_back(strip_root(p.path()).u8string());

@@ -8,7 +8,7 @@
 
 Mechant::Mechant(bool isOnLeft)
 {
-    sprite_.setTexture(RessourceLoader::getTexture("mechant.png"));
+    sprite_.setTexture(RessourceLoader::getTexture("sprites/mechant.png"));
     
     if(!isOnLeft)
     {

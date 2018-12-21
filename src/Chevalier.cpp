@@ -9,11 +9,11 @@
 Chevalier::Chevalier()
 {
     sprites_.emplace_back();
-    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_haut.png"));
+    sprites_.back().setTexture(RessourceLoader::getTexture("sprites/chevalier_haut.png"));
     sprites_.emplace_back();
-    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_milieu.png"));
+    sprites_.back().setTexture(RessourceLoader::getTexture("sprites/chevalier_milieu.png"));
     sprites_.emplace_back();
-    sprites_.back().setTexture(RessourceLoader::getTexture("chevalier_bas.png"));
+    sprites_.back().setTexture(RessourceLoader::getTexture("sprites/chevalier_bas.png"));
 
 	hitbox_.setSize({ 100,200 });
 	hitbox_.setOrigin(-85 + sprites_.back().getGlobalBounds().width / 2.f, -40 + sprites_.back().getGlobalBounds().width / 2.f);

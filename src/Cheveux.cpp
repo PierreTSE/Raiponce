@@ -13,6 +13,8 @@ Cheveux::Cheveux()
 	sens = random(-1, 1);
 
 	x = (TOWER_X1 + TOWER_X2) / 2.f;
+
+	width = cheveux1.getGlobalBounds().width;
 }
 
 void Cheveux::draw(sf::RenderWindow & window)

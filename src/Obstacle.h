@@ -13,6 +13,7 @@ public:
     bool         isDead() const { return dead; }
     void         setPosition(sf::Vector2f pos) { sprite_.setPosition(pos); }
     sf::Vector2f getPosition() const { return sprite_.getPosition(); }
+	sf::FloatRect getSize() const { return sprite_.getGlobalBounds(); }
 
     void reset();
 

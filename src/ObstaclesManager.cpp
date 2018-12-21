@@ -27,7 +27,7 @@ void ObstaclesManager::gestion(sf::RenderWindow & window)
 	if (timer > sf::seconds(2)) {
         int n_obs = random(obstacles_.size() - 1);
         const float h_sprite = 230;
-		if(obstacles_[n_obs].getPosition().y > WINDOW_SIZE_Y - h_sprite/2){
+		if(obstacles_[n_obs].getPosition().y > WINDOW_SIZE_Y + h_sprite/2){
 		    obstacles_[n_obs].reset();
 		    timer = sf::Time::Zero;
 		}

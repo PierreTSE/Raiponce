@@ -15,6 +15,7 @@ class ObstaclesManager {
 		ObstaclesManager();
 		static ObstaclesManager& getInstance();
 		void gestion(sf::RenderWindow &window);
+		std::vector<Obstacle> &getVector() { return obstacles_; };
 		
 };
 

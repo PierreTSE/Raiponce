@@ -9,6 +9,7 @@
 #include <iostream>
 #include <filesystem>
 
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), "SFML works!");
@@ -21,6 +22,8 @@ int main()
 	Tour tour;
 	Cheveux cheveux;
 	Chevalier chevalier;
+
+	chevalier.setPosition(cheveux.getX(), 400);
 
     while (window.isOpen())
     {
@@ -39,7 +42,7 @@ int main()
 		window.draw(bg);
 		tour.draw(window);
 		cheveux.draw(window);
-        chevalier.draw(window);
+        chevalier.draw(window, cheveux);
 		ObstaclesManager::getInstance().gestion(window);		
         window.display();
     }

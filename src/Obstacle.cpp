@@ -28,6 +28,6 @@ void Obstacle::reset()
 {
     speed_ = random(200,700);
     rotSpeed_ = random(100, 220);
-	setPosition({(float)random(TOWER_X1, TOWER_X2),0});
+	setPosition({(float)random(TOWER_X1, TOWER_X2), -sprite_.getGlobalBounds().height});
 }
 

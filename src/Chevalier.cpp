@@ -60,14 +60,20 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 				sp.x = -1;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 				sp.x = 1;
+
+			for (auto &s : sprites_)
+				s.setRotation(0);
 		}
 		else
 		{
+			for (auto &s : sprites_)
+				s.rotate(globalClock::getClock().frameTime().asSeconds() * 1000);
+
 			sp = vit_;
 
 			if (vit_.x > 0)
 			{
-				vit_.x -= globalClock::getClock().frameTime().asSeconds() * 2;
+				vit_.x -= globalClock::getClock().frameTime().asSeconds() * 1.5;
 				if (vit_.x < 0)
 				{
 					tempsImune_ = sf::seconds(100);
@@ -77,7 +83,7 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 			}
 			if (vit_.x < 0)
 			{
-				vit_.x += globalClock::getClock().frameTime().asSeconds() * 2;
+				vit_.x += globalClock::getClock().frameTime().asSeconds() * 1.5;
 				if (vit_.x > 0)
 				{
 					tempsImune_ = sf::seconds(100);
@@ -87,7 +93,7 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 				
 			if (vit_.y > 0)
 			{
-				vit_.y -= globalClock::getClock().frameTime().asSeconds() * 2;
+				vit_.y -= globalClock::getClock().frameTime().asSeconds() * 1.5;
 				if (vit_.y < 0)
 				{
 					tempsImune_ = sf::seconds(100);
@@ -96,7 +102,7 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 			}
 			if (vit_.y < 0)
 			{
-				vit_.y += globalClock::getClock().frameTime().asSeconds() * 2;
+				vit_.y += globalClock::getClock().frameTime().asSeconds() * 1.5;
 				if (vit_.y > 0)
 				{
 					tempsImune_ = sf::seconds(100);
@@ -114,7 +120,6 @@ void Chevalier::draw(sf::RenderWindow & window, Cheveux &ch)
 		}
 		else
 		{
-			
 			if (tempsImune_ > sf::seconds(0.5f) && tempsVide_ != sf::Time::Zero)
 				tempsImune_ = sf::seconds(100);
 

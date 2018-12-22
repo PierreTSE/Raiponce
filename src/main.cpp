@@ -10,6 +10,7 @@
 #include <filesystem>
 #include "Mechant.hpp"
 #include <SFML/Audio/Music.hpp>
+#include "DJ.hpp"
 
 
 int main()
@@ -53,13 +54,13 @@ int main()
     scoreText.setFont(RessourceLoader::getFont("font/KingsCross.ttf"));
     scoreText.setCharacterSize(60);
     scoreText.setFillColor(sf::Color(255, 255 , 255));
-    double score = 0;
+    long long score = 0;
 
     //sons
     sf::Music music;
     music.openFromFile(RessourceLoader::getPath("audio/music/ClubSeamus.ogg"));
     music.setLoop(true);
-    
+	DJ::getInstance();
 
     //entités
 	Tour tour;
@@ -76,7 +77,7 @@ int main()
     //ACCUEIL
 
     bool isaccueil = true;
-    while(isaccueil)
+    while(isaccueil && window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
@@ -93,6 +94,8 @@ int main()
         window.draw(text2);
         window.draw(text3);
         window.display();
+
+		sf::sleep(sf::milliseconds(10));
     }
 
     //JEU
@@ -101,7 +104,7 @@ int main()
     //lancement musique
     music.play();
 
-    globalClock::getClock().restart();
+	globalClock::getClock().start();
 
     while (window.isOpen())
     {
@@ -114,7 +117,7 @@ int main()
                 window.close();
         }
 
-        score += globalClock::getClock().frameTime().asMilliseconds() * 7;
+        score += globalClock::getClock().frameTime().asMilliseconds(); //*7
         scoreText.setString(std::to_string(static_cast<int>(score)) + " m");
         const double textsize = 20 * std::to_string(score).length();
         scoreText.setPosition({(WINDOW_SIZE_X - static_cast<float>(textsize))/2, 5.f});
@@ -133,6 +136,8 @@ int main()
 
 		if (chevalier.isDead())
 		{
+			
+
 			sf::Texture prevWindow;
 			sf::Sprite spr;
 			sf::RectangleShape rect;
@@ -140,6 +145,8 @@ int main()
 
 			text.setFont(RessourceLoader::getFont("font/KingsCross.ttf"));
 			text.setFillColor(sf::Color(255, 255, 255));
+
+			
 
 			prevWindow.create(1280, 720);
 			prevWindow.update(window);
@@ -151,7 +158,7 @@ int main()
 
 			bool continuer = true;
 
-			while (continuer)
+			while (continuer /*|| DJ::getInstance().isSoundPlaying("cri")*/)
 			{
 				sf::Event event;
 				while (window.pollEvent(event))
@@ -202,10 +209,14 @@ int main()
 				window.draw(text);
 
 				window.display();
+
+				sf::sleep(sf::milliseconds(10));
 			}
 		}
 
         window.display();
+
+		sf::sleep(sf::milliseconds(10));
     }
 
     return 0;

@@ -8,6 +8,8 @@
 #include "Cheveux.h"
 #include <SFML/Audio/Sound.hpp>
 
+enum Son{SURPRISE, BOING};
+
 class Chevalier
 {
 public:
@@ -21,6 +23,9 @@ private:
     //son
     std::vector<sf::Sound> boings_;
     std::vector<sf::Sound> surprises_;
+	bool isPlaying = false;
+
+	void playSoundOnBump();
 
     //graphiques
     std::vector<sf::Sprite> sprites_;

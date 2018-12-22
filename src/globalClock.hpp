@@ -21,7 +21,7 @@ class globalClock
         static globalClock& getClock();
         
 
-    private:
+    private:		
         sf::Clock clock;
         sf::Time frame = sf::Time::Zero;
         sf::Time global = sf::Time::Zero;
@@ -29,7 +29,5 @@ class globalClock
         bool running = true;
         std::vector<std::pair<sf::Time, std::function<void()>>> callbacks;
 };
-
-static globalClock instance;
 
 #endif // GLOBALCLOCK_HPP

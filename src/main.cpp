@@ -14,7 +14,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), "Rape paint");
+    sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y), "Raipaint");
 
 	// ACCUEIL-------------------
     sf::Sprite accueil;
@@ -35,7 +35,7 @@ int main()
     sf::Text text3;
     text3.setFont(RessourceLoader::getFont("font/Precious.ttf"));
     text3.setCharacterSize(90);
-    text3.setString("RapePaint");
+    text3.setString("Raipaint");
     text3.setPosition(70, 240);
     
     

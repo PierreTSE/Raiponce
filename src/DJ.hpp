@@ -18,6 +18,8 @@ public :
     void stopMusic(const std::string& name);
     void stopAllMusic();
 
+	bool isSoundPlaying(const std::string& name);
+
 private :
     std::map<std::string, sf::Sound>                  sounds_;
     std::map<std::string, std::unique_ptr<sf::Music>> musics_;

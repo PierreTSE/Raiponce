@@ -2,6 +2,7 @@
 #include<algorithm>
 
 
+
 sf::Time globalClock::restart() noexcept
 {
     sf::Time elapsed = clock.restart();
@@ -56,6 +57,7 @@ sf::Time globalClock::timeSinceStartup() const noexcept
 
 globalClock& globalClock::getClock()
 {
+	static globalClock instance;
     return instance;
 }
 
